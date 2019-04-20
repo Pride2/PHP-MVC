@@ -1,8 +1,22 @@
 <?php
 
-require "controller/Controller.php";
+require "controller/HomeController.php";
 
-$ctrl = new Controller();
+$pagina = isset($_GET["pagina"]) ? $_GET["pagina"] : "index";
 
-$ctrl->Index();
+$ctrl = new HomeController();
+
+//verifica a url da pagina para redirecionar
+
+switch($pagina) {
+    case "index" :
+    $ctrl->Index();
+    break;
+    case "login" :
+    $ctrl->Login();
+    break;
+    case "painel" :
+    $ctrl->Painel();
+    break;
+}
 ?>
